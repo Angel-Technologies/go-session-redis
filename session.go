@@ -72,7 +72,7 @@ func (m *Manager) createSession() (*Session, *http.Cookie) {
 		Value:    url.QueryEscape(session.sid),
 		Path:     "/",
 		HttpOnly: true,
-		MaxAge:   int(m.maxLifeTTL),
+		MaxAge:   int(m.maxLifeTTL / time.Second),
 	}
 
 	return session, cookie
